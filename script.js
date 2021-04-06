@@ -1,6 +1,26 @@
 // Write your JavaScript code here!
 window.addEventListener("load", function () {
    let form = document.querySelector('form');
+   const destinationDiv = document.getElementById('missionTarget');
+         fetch("https://handlers.education.launchcode.org/static/planets.json").then(function(response) {
+            response.json().then(function(json) {
+               planetaryData = json[4];
+               
+         
+         destinationDiv.innerHTML = `
+         <h2>Mission Destination</h2>
+         <ol>
+            <li>Name: ${planetaryData.name}</li>
+            <li>Diameter: ${planetaryData.diameter}</li>
+            <li>Star: ${planetaryData.star}</li>
+            <li>Distance from Earth: ${planetaryData.distance}</li>
+            <li>Number of Moons: ${planetaryData.moons}</li>
+         </ol>
+         <img src="${planetaryData.image}">
+      `
+      });
+
+    
    form.addEventListener('submit', function (event) {
       event.preventDefault();
       const pilotName = document.querySelector('input[name=pilotName]');
@@ -44,7 +64,18 @@ window.addEventListener("load", function () {
          launchStatus.innerHTML = 'Shuttle is Ready For Launch'
          launchStatus.style.color = 'green'
 
+         
+               div.innerHTML = `
+      <ol>
+         <li id="pilotStatus">${pilotName.value} Ready</li>
+         <li id="copilotStatus">${coPilotName.value} Ready</li>
+         <li id="fuelStatus">${fuelStatus}</li>
+         <li id="cargoStatus">${cargoStatus}</li>
+      </ol>`
 
+               let index = 4
+            
+      }
          div.innerHTML = `
       <ol>
          <li id="pilotStatus">${pilotName.value} Ready</li>
@@ -54,34 +85,15 @@ window.addEventListener("load", function () {
       </ol>`
          div.style.visibility = 'visible'
 
-         const destinationDiv = document.getElementById('missionTarget');
+       
 
-         const planetaryData = {
-            "name": 'KS-18b',
-            "diameter": '34500 km',
-            "star": 'KS-18',
-            "distance": '110 lights years from Earth',
-            "image": 'https://www.nasa.gov/sites/default/files/thumbnails/image/heic1916a.jpg',
-            "moons": 0
-         }
-
-         destinationDiv.innerHTML = `
-      <h2>Mission Destination</h2>
-      <ol>
-         <li>Name: ${planetaryData.name}</li>
-         <li>Diameter: ${planetaryData.diameter}</li>
-         <li>Star: ${planetaryData.star}</li>
-         <li>Distance from Earth: ${planetaryData.distance}</li>
-         <li>Number of Moons: ${planetaryData.moons}</li>
-      </ol>
-      <img src="${planetaryData.image}">
-`
-      }
-
+         
+       
+      
 
    });
 
-
+});
 
 });
 /* This block of code shows how to format the HTML once you fetch some planetary JSON!

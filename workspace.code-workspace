@@ -1,0 +1,19 @@
+{
+	"folders": [
+		{
+			"path": "../html-me-something"
+		},
+		{
+			"path": "."
+		},
+		{
+			"path": "../../../Downloads/Fetch-and-JSON-Studio-master 2"
+		},
+		{
+			"path": "../angular-lc101-projects"
+		}
+	],
+	"settings": {
+		"liveServer.settings.multiRootWorkspaceName": "Launch-Checklist-Form"
+	}
+}
